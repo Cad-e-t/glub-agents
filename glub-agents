@@ -1,0 +1,363 @@
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Check, Zap, Brain, Users, TrendingUp, MessageCircle } from 'lucide-react';
+
+export default function AgentLanding() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % 3);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const testimonials = [
+    { name: "Sarah K.", role: "Startup Founder", text: "Built my content agent in 3 days. Now I publish 10x more without the stress." },
+    { name: "Mike R.", role: "Consultant", text: "My research agent saves me 15 hours/week. Best investment I've made." },
+    { name: "Lisa M.", role: "Creator", text: "Finally escaped the SaaS subscription trap. My agent just works." }
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      {/* Subtle Background Grid */}
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(30,58,138,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.03)_1px,transparent_1px)] bg-[size:72px_72px] pointer-events-none"></div>
+      
+      {/* Hero Section */}
+      <section className="relative px-6 py-24 text-center max-w-5xl mx-auto">
+        <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="w-20 h-20 bg-blue-600 rounded-2xl mx-auto mb-8 flex items-center justify-center shadow-xl">
+            <Brain className="w-10 h-10 text-white" />
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight tracking-tight">
+            Stop Subscribing.<br />
+            <span className="text-blue-400">Build Your AI.</span>
+          </h1>
+          
+          <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Custom AI agents built for your exact workflow. No monthly fees, no generic solutions — just intelligent automation that works like you do.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 shadow-lg">
+              <MessageCircle className="w-5 h-5" />
+              DM "AGENT" to Start
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <div className="text-gray-500 text-sm">Built in 3-7 days</div>
+          </div>
+
+          {/* Social Proof */}
+          <div className="flex justify-center items-center gap-8 text-gray-500 text-sm border-t border-gray-800 pt-8">
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              <span>50+ agents deployed</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-4 h-4" />
+              <span>10x productivity gains</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section className="px-6 py-20 bg-gray-900/50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-200">
+            The SaaS Subscription Problem
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-lg mb-8 text-gray-400 leading-relaxed">
+                You're spending $200+ monthly on tools that don't understand your business, force you into their workflow, and create permanent dependency.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-gray-400">
+                  <div className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  <span>Generic solutions that don't fit your needs</span>
+                </div>
+                <div className="flex items-center gap-3 text-gray-400">
+                  <div className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  <span>Monthly fees that compound forever</span>
+                </div>
+                <div className="flex items-center gap-3 text-gray-400">
+                  <div className="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+                  <span>No understanding of your unique workflow</span>
+                </div>
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold text-white mb-2">$2,400</div>
+              <div className="text-gray-500">Average yearly SaaS spend</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solution Section */}
+      <section className="px-6 py-20">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16 text-center text-white">
+            Your AI Workforce, Built Once
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gray-900 rounded-xl p-8 border border-gray-800 hover:border-gray-700 transition-colors">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+                <Brain className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-white">Learns Your Style</h3>
+              <p className="text-gray-400">Trained on your tone, goals, and workflow patterns</p>
+            </div>
+            
+            <div className="bg-gray-900 rounded-xl p-8 border border-gray-800 hover:border-gray-700 transition-colors">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+                <Zap className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-white">Deploy Instantly</h3>
+              <p className="text-gray-400">Works via chat, embed, or hosted link immediately</p>
+            </div>
+            
+            <div className="bg-gray-900 rounded-xl p-8 border border-gray-800 hover:border-gray-700 transition-colors">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+                <Check className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-white">Own Forever</h3>
+              <p className="text-gray-400">No subscriptions, no dependencies, complete ownership</p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <div className="inline-block bg-gray-900 rounded-lg px-8 py-4 border border-gray-800">
+              <span className="text-xl font-semibold text-blue-400">One-time investment. Lifetime value.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who It's For */}
+      <section className="px-6 py-20 bg-gray-900/30">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center text-white">Who This Is For</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+              <h3 className="text-lg font-semibold mb-3 text-white">Founders & Creators</h3>
+              <p className="text-gray-400">Drowning in content, outreach, and repetitive tasks</p>
+            </div>
+            <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+              <h3 className="text-lg font-semibold mb-3 text-white">Consultants & Coaches</h3>
+              <p className="text-gray-400">Repeating the same analysis and advice daily</p>
+            </div>
+            <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+              <h3 className="text-lg font-semibold mb-3 text-white">Growing Teams</h3>
+              <p className="text-gray-400">Need to scale without constant hiring</p>
+            </div>
+            <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+              <h3 className="text-lg font-semibold mb-3 text-white">Knowledge Workers</h3>
+              <p className="text-gray-400">Spending too much time on research and docs</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Example Agents */}
+      <section className="px-6 py-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">Example Agents</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AgentCard 
+              title="Book Builder Agent" 
+              description="Transform notes and outlines into structured chapters with your voice."
+              impact="+500% writing speed"
+            />
+            <AgentCard 
+              title="Inbox Assistant" 
+              description="Triage emails, draft responses, flag priorities automatically."
+              impact="15 hours saved weekly"
+            />
+            <AgentCard 
+              title="Revenue Tracker" 
+              description="Monitor income, expenses, and trends across all platforms."
+              impact="Real-time insights"
+            />
+            <AgentCard 
+              title="Research Synthesizer" 
+              description="Digest complex documents into actionable summaries."
+              impact="10x faster research"
+            />
+            <AgentCard 
+              title="Content Multiplier" 
+              description="Create posts, newsletters, and copy in your exact tone."
+              impact="50+ posts per week"
+            />
+            <AgentCard 
+              title="Strategy Advisor" 
+              description="Analyze data and provide strategic recommendations."
+              impact="Data-driven decisions"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="px-6 py-20 bg-gray-900/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-12 text-white">Client Results</h2>
+          <div className="relative h-32">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-all duration-500 ${
+                  index === activeTestimonial 
+                    ? 'opacity-100 transform translate-y-0' 
+                    : 'opacity-0 transform translate-y-4'
+                }`}
+              >
+                <div className="bg-gray-900 rounded-xl p-8 border border-gray-800">
+                  <p className="text-lg italic mb-4 text-gray-300">"{testimonial.text}"</p>
+                  <div className="flex items-center justify-center gap-2 text-sm">
+                    <span className="font-semibold text-white">{testimonial.name}</span>
+                    <span className="text-gray-500">—</span>
+                    <span className="text-gray-500">{testimonial.role}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === activeTestimonial ? 'bg-blue-600' : 'bg-gray-600'
+                }`}
+                onClick={() => setActiveTestimonial(index)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Packages */}
+      <section className="px-6 py-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">Service Packages</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Package
+              title="Agent Starter"
+              price="$299"
+              popular={false}
+              features={[
+                "Single-purpose AI agent",
+                "Custom training on your style",
+                "Chat, embed, or hosted deployment",
+                "3-day delivery"
+              ]}
+              ideal="Perfect for testing"
+            />
+            <Package
+              title="Agent Pro"
+              price="$799"
+              popular={true}
+              features={[
+                "Multi-function agent system",
+                "Advanced backend automation",
+                "Data integration capabilities",
+                "5-7 day delivery"
+              ]}
+              ideal="Most popular"
+            />
+            <Package
+              title="Agent Team"
+              price="$1,500+"
+              popular={false}
+              features={[
+                "Fully custom agent ecosystem",
+                "Advanced data ingestion",
+                "Memory & learning systems",
+                "7-14 day delivery"
+              ]}
+              ideal="Enterprise-grade"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="px-6 py-24 text-center bg-gray-900/50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6 text-white">
+            Ready to Build Your AI Agent?
+          </h2>
+          <p className="text-xl mb-12 text-gray-400">
+            Stop paying for software that doesn't understand you. Build AI that works exactly how you think.
+          </p>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-12/ py-6 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-3 mx-auto mb-8 shadow-lg">
+            <MessageCircle className="w-6 h-6" />
+            DM "AGENT" on Twitter
+            <ArrowRight className="w-6 h-6" />
+          </button>
+          <p className="text-gray-500">
+            Or <a href="https://twitter.com/yourhandle" className="text-blue-400 hover:text-blue-300 underline">start a conversation</a> about your specific needs
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-6 py-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+        <p>Built once. Owned forever. No subscriptions.</p>
+      </footer>
+    </div>
+  );
+}
+
+function AgentCard({ title, description, impact }) {
+  return (
+    <div className="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-gray-700 transition-colors">
+      <h3 className="text-lg font-semibold mb-3 text-white">{title}</h3>
+      <p className="text-gray-400 mb-4 text-sm leading-relaxed">{description}</p>
+      <div className="text-blue-400 font-medium text-sm">{impact}</div>
+    </div>
+  );
+}
+
+function Package({ title, price, features, popular, ideal }) {
+  return (
+    <div className={`relative bg-gray-900 rounded-xl p-8 border transition-colors ${
+      popular 
+        ? 'border-blue-600' 
+        : 'border-gray-800 hover:border-gray-700'
+    }`}>
+      {popular && (
+        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+          <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            MOST POPULAR
+          </div>
+        </div>
+      )}
+      <div className="text-center mb-8">
+        <h3 className="text-xl font-semibold mb-2 text-white">{title}</h3>
+        <div className="text-3xl font-bold text-white mb-2">{price}</div>
+        <p className="text-gray-500 text-sm">{ideal}</p>
+      </div>
+      <ul className="space-y-3 mb-8">
+        {features.map((feature, index) => (
+          <li key={index} className="flex items-center gap-3">
+            <Check className="w-4 h-4 text-blue-400 flex-shrink-0" />
+            <span className="text-gray-400 text-sm">{feature}</span>
+          </li>
+        ))}
+      </ul>
+      <button className={`w-full py-3 rounded-lg font-medium transition-colors ${
+        popular
+          ? 'bg-blue-600 hover:bg-blue-700 text-white'
+          : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
+      }`}>
+        Get Started
+      </button>
+    </div>
+  );
+}
